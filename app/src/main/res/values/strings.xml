@@ -2,4 +2,7 @@
     <string name="app_name">Recetario</string>
     <string name="login">Iniciar sesión</string>
     <string name="register">Registrarse</string>
+    <string name="email">Correo electrónico</string>
+    <string name="password">Contraseña</string>
+    <string name="forgotpassword">¿Olvidaste tu contraseña?</string>
 </resources>
