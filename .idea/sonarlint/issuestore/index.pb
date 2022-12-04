@@ -5,15 +5,9 @@ H
 app/google-services.json,f\d\fd8d34b142d02ec743a8efefefd2c097961666e9
 >
 app/.gitignore,5\1\51e1c5d383dfaa35e0e7e5873a0a99355a86880f
-A
-gradle.properties,2\a\2afbb999f001938c88fa43fc2ef52abf0f8213e4
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
-<
-build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
-?
-settings.gradle,0\5\05efc8b1657769a27696d478ded1e95f38737233
 ;
 gradlew.bat,2\a\2a45a911a8f1836b0b6c5b758962572012d8f8c3
 7
@@ -26,3 +20,5 @@ l
 <app/src/test/java/com/example/recetario/ExampleUnitTest.java,2\5\253db81168f45ea135024d784f0e343abc175257
 }
 Mapp/src/main/java/com/example/recetario/activities/AccessControlActivity.java,c\d\cd36e90f4283bdd9c408b693ed69c3e6635c4617
+u
+Eapp/src/main/java/com/example/recetario/activities/LoginActivity.java,5\8\581de5ef2ac9ada696357fb08e76aacc73838323
