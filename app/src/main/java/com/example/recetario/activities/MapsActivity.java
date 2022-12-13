@@ -1,7 +1,6 @@
 package com.example.recetario.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentActivity;
 
 import android.os.Bundle;
 
@@ -12,18 +11,26 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.GeoPoint;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-    private ActivityMapsBinding binding;
+    private FirebaseAuth mAuth;
+    private FirebaseFirestore db;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_maps);
 
-        binding = ActivityMapsBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        mAuth = FirebaseAuth.getInstance();
+        db = FirebaseFirestore.getInstance();
+
+
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -43,10 +50,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        db.collection("users").document(mAuth.getCurrentUser().getUid()).get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                GeoPoint geoPoint = task.getResult().getGeoPoint("location");
+                LatLng latLng = new LatLng(geoPoint.getLatitude(), geoPoint.getLongitude());
+                mMap.addMarker(new MarkerOptions().position(latLng).title("Marcador en tu ubicación"));
+                mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+            }
+        });
 
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        //LatLng sydney = new LatLng(-34, 151);
+        //mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+        //mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
     }
 }
