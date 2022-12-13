@@ -26,6 +26,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+
         // Se obtienen los elementos de la vista
         editTextTextEmailAddress = findViewById(R.id.editTextTextEmailAddress);
         editTextTextPassword = findViewById(R.id.editTextTextPassword);
@@ -41,33 +42,39 @@ public class LoginActivity extends AppCompatActivity {
                 AlertDialog dialog = builder.create();
                 dialog.show();
             } else {
+
                 // Si los campos no están vacíos, se procede a iniciar sesión
-                mAuth = FirebaseAuth.getInstance();
-                mAuth.signInWithEmailAndPassword(editTextTextEmailAddress.getText().toString(), editTextTextPassword.getText().toString())
-                        .addOnCompleteListener(this, task -> {
-                            if (task.isSuccessful()) {
-                                // Si el inicio de sesión es exitoso, se redirige al usuario a la actividad principal
-                                AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                                builder.setMessage("Inicio de sesión exitoso");
-                                builder.setTitle("Éxito");
-                                builder.setPositiveButton("Aceptar", (dialog, which) -> {
-                                    Intent intent = new Intent(this, MainActivity.class);
-                                    startActivity(intent);
-                                });
-                                AlertDialog dialog = builder.create();
-                                dialog.show();
-                            } else {
-                                // Si el inicio de sesión falla, se muestra un mensaje de error
-                                AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                                builder.setMessage("El correo electrónico o la contraseña son incorrectos");
-                                builder.setTitle("Error");
-                                builder.setPositiveButton("Aceptar", null);
-                                AlertDialog dialog = builder.create();
-                                dialog.show();
-                            }
-                        });
+                login();
             }
         });
 
+    }
+
+    private void login() {
+        mAuth = FirebaseAuth.getInstance();
+        mAuth.signOut();
+        mAuth.signInWithEmailAndPassword(editTextTextEmailAddress.getText().toString(), editTextTextPassword.getText().toString())
+                .addOnCompleteListener(this, task -> {
+                    if (task.isSuccessful()) {
+                        // Si el inicio de sesión es exitoso, se redirige al usuario a la actividad principal
+                        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                        builder.setMessage("Inicio de sesión exitoso");
+                        builder.setTitle("Éxito");
+                        builder.setPositiveButton("Aceptar", (dialog, which) -> {
+                            Intent intent = new Intent(this, MainActivity.class);
+                            startActivity(intent);
+                        });
+                        AlertDialog dialog = builder.create();
+                        dialog.show();
+                    } else {
+                        // Si el inicio de sesión falla, se muestra un mensaje de error
+                        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                        builder.setMessage("El correo electrónico o la contraseña son incorrectos");
+                        builder.setTitle("Error");
+                        builder.setPositiveButton("Aceptar", null);
+                        AlertDialog dialog = builder.create();
+                        dialog.show();
+                    }
+                });
     }
 }

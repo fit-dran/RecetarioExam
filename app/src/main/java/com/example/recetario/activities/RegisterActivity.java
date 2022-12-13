@@ -14,6 +14,7 @@ import android.media.Image;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.provider.Settings;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;

@@ -18,7 +18,9 @@ X
 Kapp/src/androidTest/java/com/example/recetario/ExampleInstrumentedTest.java,e\2\e20c50b1f490a5071043dc63054d2ef6b379f60c
 l
 <app/src/test/java/com/example/recetario/ExampleUnitTest.java,2\5\253db81168f45ea135024d784f0e343abc175257
-}
-Mapp/src/main/java/com/example/recetario/activities/AccessControlActivity.java,c\d\cd36e90f4283bdd9c408b693ed69c3e6635c4617
-u
-Eapp/src/main/java/com/example/recetario/activities/LoginActivity.java,5\8\581de5ef2ac9ada696357fb08e76aacc73838323
+A
+gradle.properties,2\a\2afbb999f001938c88fa43fc2ef52abf0f8213e4
+?
+settings.gradle,0\5\05efc8b1657769a27696d478ded1e95f38737233
+h
+8app/src/main/java/com/example/recetario/models/User.java,5\1\519ea1af86c02341a471b015279cc541e7a3f5ea
