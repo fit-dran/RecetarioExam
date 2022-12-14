@@ -24,3 +24,7 @@ A
 settings.gradle,0\5\05efc8b1657769a27696d478ded1e95f38737233
 h
 8app/src/main/java/com/example/recetario/models/User.java,5\1\519ea1af86c02341a471b015279cc541e7a3f5ea
+<
+build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
+@
+app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
