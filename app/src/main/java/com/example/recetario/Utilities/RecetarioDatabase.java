@@ -78,4 +78,9 @@ public class RecetarioDatabase extends SQLiteOpenHelper{
         cursor.close();
         return recipes;
     }
+
+    public void deleteAllRecipes() {
+        android.database.sqlite.SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("delete from " + DatabaseHelper.RECIPE_TABLE_NAME);
+    }
 }
