@@ -35,6 +35,16 @@ public class SyncActivity extends AppCompatActivity {
         ArrayList<Recipe> recipes = recetarioDatabase.getAllRecipes();
         textViewRecipeQuantity.setText("Recetas: " + recipes.size());
 
+        if (recipes.size() <= 0) {
+            AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+            alertDialog.setTitle("Error");
+            alertDialog.setMessage("No hay recetas para sincronizar");
+            alertDialog.setPositiveButton("OK", (dialog, which) -> {
+                finish();
+            });
+
+        }
+
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 

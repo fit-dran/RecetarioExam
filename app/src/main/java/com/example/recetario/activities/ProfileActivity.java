@@ -76,7 +76,7 @@ public class ProfileActivity extends AppCompatActivity {
         Date registerDate = new Date(mAuth.getCurrentUser().getMetadata().getCreationTimestamp());
 
         // Se muestran los datos en la vista
-        textViewEmail.setText(mAuth.getUid());
+        textViewEmail.setText(email);
         textViewUsername.setText(username);
         textViewRegisterDate.setText(registerDate.toString());
         imageViewProfilePicture.setDrawingCacheEnabled(true);
